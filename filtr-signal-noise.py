@@ -134,6 +134,8 @@ plt.show()
 plt.close()  # Ferme la figure après l'affichage
 
 # Affichage des caractéristiques du filtre
+
+
 print("Caractéristiques du filtre passe-bas utilisé :")
 print(f"Type de filtre : Butterworth")
 print(f"Ordre du filtre : 4")
