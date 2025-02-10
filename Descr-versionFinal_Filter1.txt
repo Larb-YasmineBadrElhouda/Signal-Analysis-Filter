@@ -1,0 +1,79 @@
+Description technique
+---------------------
+      Ce script Python enregistre une voix à l'aide de la bibliothèque sounddevice,
+     génère du bruit aléatoire (blanc, rose ou brun), et applique un filtre passe-bas sur le signal combiné (voix + bruit) pour atténuer les hautes fréquences.
+     Le code utilise les bibliothèques numpy, matplotlib, scipy et wavio pour le traitement et l'enregistrement des signaux audio.
+
+Fonctionnalités principales :
+Enregistrement audio :
+---------------------------------
+Utilisation de sounddevice pour capturer un signal audio de la voix sur une durée spécifiée (3 secondes) à une fréquence d'échantillonnage de 44.1 kHz.
+Sauvegarde du fichier audio enregistré au format WAV.
+Génération de bruit :
+
+Trois types de bruit sont générés :
+------------------------------------
+ bruit blanc, bruit rose, et bruit brun. Le type de bruit est sélectionnable via la variable noise_type.
+Le bruit est normalisé avant d'être sauvegardé dans un fichier WAV.
+
+Combinaison du signal voix et du bruit :
+---------------------------------------------------------------
+Le bruit généré est ajusté en amplitude (par un facteur de 0.1) avant d'être combiné avec l'enregistrement de la voix.
+Le signal combiné (voix + bruit) est sauvegardé dans un fichier WAV.
+Filtrage :
+
+Un filtre passe-bas de type Butterworth d'ordre 4 est appliqué au signal combiné pour atténuer les fréquences au-dessus de 3000 Hz.
+La fréquence de coupure est définie par la variable cutoff_frequency.
+Le signal filtré est sauvegardé dans un fichier WAV.
+Affichage et sauvegarde des graphiques :
+
+Les signaux temporels des fichiers audio (voix enregistrée, bruit généré, signal combiné, et signal filtré) sont tracés et sauvegardés sous forme d'images PNG.
+La densité spectrale des signaux (voix, bruit et signal combiné) est calculée à l'aide de la méthode signal.welch et affichée dans des graphiques, également sauvegardés en tant qu'images PNG.
+
+
+Détails techniques :
+-----------------------------------------
+Fréquence d'échantillonnage : 44.1 kHz
+Durée de l'enregistrement : 3 secondes
+Type de filtre : Passe-bas de type Butterworth d'ordre 4
+Fréquence de coupure du filtre : 3000 Hz
+Bruit généré : Bruit blanc, rose ou brun (selon le choix dans la variable noise_type)
+-----------------------------------------------------------------------------------------------
+Bibliothèques utilisées :
+---------------------------
+sounddevice : pour l'enregistrement audio en temps réel.
+numpy : pour la génération et le traitement des signaux.
+matplotlib : pour la visualisation graphique des signaux.
+scipy.signal : pour la génération du bruit et le filtrage du signal.
+wavio : pour l'enregistrement et la sauvegarde des fichiers audio en format WAV.
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Le filtre utilisé dans ce code est un filtre passe-bas de type Butterworth. Voici les détails du filtre :
+
+Type de filtre :
+-----------------------
+ Butterworth,
+ qui est un filtre avec une réponse en fréquence aussi plate que possible dans la bande passante (sans ondulation) et
+ une atténuation monotone au-delà de la fréquence de coupure.
+ 
+Ordre du filtre : 
+-----------------------
+4, ce qui signifie que le filtre a un comportement assez net autour de la fréquence de coupure.
+
+Fréquence de coupure : 
+----------------------3000 Hz, ce qui signifie que les fréquences supérieures à 3000 Hz seront atténuées.
+
+Le filtre est conçu avec la fonction signal.butter(4, normal_cutoff, btype='low', analog=False) de scipy.signal, où :
+
+4 est l'ordre du filtre.
+normal_cutoff est la fréquence de coupure normalisée, calculée par rapport à la fréquence de Nyquist (la moitié de la fréquence d'échantillonnage).
