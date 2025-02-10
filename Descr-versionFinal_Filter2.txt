@@ -1,7 +1,7 @@
 # Filtrage de Tchebychev
 
 ce tp implémente un filtrage passe-bas de Tchebychev sur un signal audio combiné (voix + bruit). 
-Il enregistre un signal vocal, y ajoute un bruit synthétique, puis applique un filtre pour réduire les hautes fréquences indésirables.
+Il enregistre un signal vocal,  ajoute un bruit synthétique, puis applique un filtre pour réduire les hautes fréquences indésirables.
 
 ## filter details 
 
@@ -14,7 +14,8 @@ Il enregistre un signal vocal, y ajoute un bruit synthétique, puis applique un 
 
 Le filtre est défini à l'aide de la fonction `cheby1` de `scipy.signal` :
 
-```python
+
+{
 import scipy.signal as signal
 
 fs = 44100  # Fréquence d'échantillonnage
@@ -24,20 +25,15 @@ normal_cutoff = cutoff_frequency / nyquist
 
 b, a = signal.cheby1(4, 0.5, normal_cutoff, btype='low', analog=False)
 filtered_audio = signal.filtfilt(b, a, combined_audio)
-```
+}
 
 ##  resuult
 
-Le signal filtré est sauvegardé dans `voix_et_bruit_filtre.wav`. Des graphiques sont générés pour analyser :
+Le signal filtré est sauvegardé dans `voix_et_bruit_filtre.wav`. les graphiques :
 - Le signal temporel avant et après filtrage
 - La densité spectrale avant et après filtrage
 
-##  Fichiers générés
-- `enregistrement.wav` : Signal vocal enregistré
-- `bruit_genere.wav` : Bruit synthétique généré
-- `voix_et_bruit_combine.wav` : Signal bruité
-- `voix_et_bruit_filtre.wav` : Signal filtré
-- Graphiques de signaux et densité spectrale (format `.png`)
+
 
 
 

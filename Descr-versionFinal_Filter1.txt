@@ -1,10 +1,10 @@
 Description technique
 ---------------------
-      Ce script Python enregistre une voix à l'aide de la bibliothèque sounddevice,
+      le script Python enregistre une voix 
      génère du bruit aléatoire (blanc, rose ou brun), et applique un filtre passe-bas sur le signal combiné (voix + bruit) pour atténuer les hautes fréquences.
-     Le code utilise les bibliothèques numpy, matplotlib, scipy et wavio pour le traitement et l'enregistrement des signaux audio.
+    
 
-Fonctionnalités principales :
+Parties principales du code  :
 Enregistrement audio :
 ---------------------------------
 Utilisation de sounddevice pour capturer un signal audio de la voix sur une durée spécifiée (3 secondes) à une fréquence d'échantillonnage de 44.1 kHz.
@@ -58,7 +58,7 @@ wavio : pour l'enregistrement et la sauvegarde des fichiers audio en format WAV.
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-Le filtre utilisé dans ce code est un filtre passe-bas de type Butterworth. Voici les détails du filtre :
+Le filtre utilisé dans ce code est un filtre passe-bas de type Butterworth.
 
 Type de filtre :
 -----------------------
